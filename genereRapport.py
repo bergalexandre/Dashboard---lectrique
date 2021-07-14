@@ -7,13 +7,19 @@ from script.HeuresTravaillees   import HeuresTravaillees
 from script.TraceCourbeEnS      import CourbeEnS
 from script.AvancementObjectifs import AvancementObjectifs
 from script.AvancementSystemes  import AvancementSystemes
+from script.Problemes           import Problemes
+from script.TravailEffectue     import TravailEffectue
+from PIL import Image
+
+git_integration = True
+
 
 def run(*args):
     return subprocess.check_call(['git'] + list(args))
 
 
-def dateActuel(self, Depart = "6/5/2021"):
-    semaines = pandas.date_range(start=Depart, periods=len(16), freq="7D", engine='openpyxl') #trimeste = 16 semaines????
+def dateActuel(Depart = "6/5/2021"):
+    semaines = pandas.date_range(start=Depart, periods=16, freq="7D") #trimeste = 16 semaines????
     #trouve la semaine courante
     semaineN = 0
     for index, date in enumerate(semaines):
@@ -37,34 +43,56 @@ def add(relativeFilePath):
 def commitEtPush():
     commit_message = f"\nCréation du template semaine{dateActuel()}"
 
-    run("commit", "-am", commit_message)
-    run("push", "-u", "origin", "master")
+    run("commit", "-m", commit_message)
+    run("push")
 
 
+# dimension est un tupple (x, y)
+def resizePicture(path, dimension):
+    img = Image.open(path)
+    resized_img = img.resize(dimension)
+    resized_img.save(path)
 
 
 
 spec = Speciality.INFO
-avancement_objectifs = AvancementObjectifs("DVP-Feuille-temps.xlsm")
+avancement_objectifs = AvancementObjectifs("../DVP-Feuille-temps.xlsm")
 avancement_objectifs.graphSave()
 
 heures_travaillees = HeuresTravaillees(spec, offset=8)
 heures_travaillees.fetchData()
 heures_travaillees.graphSave()
 
-CourbeEnS("DVP-Feuille-temps.xlsm")
+CourbeEnS("../DVP-Feuille-temps.xlsm")
 
-#taches_effectuees = TachesEffectuees(spec)
-#taches_effectuees.fetchData()
-#taches_effectuees.graphSave()
+taches_effectuees = TravailEffectue(spec)
+taches_effectuees.fetchData()
+taches_effectuees.writeTable()
 
-avancement_systemes = AvancementSystemes("DVP-Feuille-temps.xlsm", spec)
+avancement_systemes = AvancementSystemes(spec)
 avancement_systemes.fetchData()
 avancement_systemes.graphSave()
 
-#problemes = Problemes(spec)
-#problemes.fetchData()
-#problemes.graphSave()
+problemes = Problemes(spec)
+problemes.fetchData()
+problemes.writeTable()
+
+
+resizePicture("img/progression_objectifs.png", (1336, 405))
+resizePicture("img/avancement.png", (1185, 483))
+resizePicture("img/Courbe_S.png", (604, 436))
+resizePicture("img/heures_travaillees.png", (511, 342)) 
+
+
+if git_integration == True:
+    pull()
+    add("img/progression_objectifs.png")
+    add("img/avancement.png")
+    add("img/Courbe_S.png")
+    add("img/heures_travaillees.png")
+    add("tableauDeTaches.tex")
+    add("tableauDeProblemes.tex") #frog(?) #WhatTheBread
+    commitEtPush()
 
 #budget = Budget(spec)
 #budget.fetchData()

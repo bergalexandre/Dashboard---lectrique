@@ -93,4 +93,4 @@ class CourbeEnS():
         plt.xticks(rotation=45)
         axe.set_xticklabels(axeXDate.strftime("%Y-%m-%d"))
         axe.legend(("heures totales", "Heures travaillées", "Heures acquises", "heures restantes"))
-        plt.savefig('img/courbe_en_S.png', bbox_inches='tight')
+        plt.savefig('img/courbe_S.png', bbox_inches='tight')

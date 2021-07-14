@@ -76,7 +76,7 @@ class HeuresTravaillees():
                       "ko" if moyennes_hebdo[indexMembre] >= 9 else "kx")
         plt.xlim([-1, len(self.heures_travaillees)])
         plt.xticks(rotation=45)
-        plt.savefig('img/heures_travaillees.png', bbox_inches='tight')
+        plt.savefig("img/heures_travaillees.png", bbox_inches='tight')
 
 
 

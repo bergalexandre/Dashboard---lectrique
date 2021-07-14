@@ -6,18 +6,18 @@ from datetime import date
 today = date.today()
 
 df_travail_effectue = pd.read_excel(
-    io='DVP-Feuille-temps.xlsm', sheet_name='Travail_Effectue', usecols='A:L', engine='openpyxl')
+    io='../DVP-Feuille-temps.xlsm', sheet_name='Travail_Effectue', usecols='A:L', engine='openpyxl')
 
 df_DVP = pd.read_excel(
-    io='DVP-Feuille-temps.xlsm', sheet_name='DVP', header=1, usecols='B:M', engine='openpyxl')
+    io='../DVP-Feuille-temps.xlsm', sheet_name='DVP', header=1, usecols='B:M', engine='openpyxl')
 
 df_Prevision_Courbe_S = pd.read_excel(
-    io='DVP-Feuille-temps.xlsm', sheet_name='Prevision_Courbe_S', header=2, usecols='B:U', engine='openpyxl')
+    io='../DVP-Feuille-temps.xlsm', sheet_name='Prevision_Courbe_S', header=2, usecols='B:U', engine='openpyxl')
 
 df_Avancement_Courbe_S = pd.read_excel(
-    io='DVP-Feuille-temps.xlsm', sheet_name='Avancement_Courbe_S', header=2, usecols='B:U', engine='openpyxl')
+    io='../DVP-Feuille-temps.xlsm', sheet_name='Avancement_Courbe_S', header=2, usecols='B:U', engine='openpyxl')
 
-df_formule = pd.read_excel(io='DVP-Feuille-temps.xlsm',
+df_formule = pd.read_excel(io='../DVP-Feuille-temps.xlsm',
                            sheet_name='Formule', usecols='v', engine='openpyxl')
 
 
@@ -59,6 +59,7 @@ class Systeme():
             'ERG1': Systeme.ERGONOMIE,
             'COQ1': Systeme.COQUE,
             'CHA1': Systeme.CHASSIS,
+            'CHA_': Systeme.CHASSIS,
             'DIR1': Systeme.DIRECTION,
             'FRE1': Systeme.FREIN,
             'TTH1': Systeme.THERMIQUE,
