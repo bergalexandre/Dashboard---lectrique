@@ -18,7 +18,7 @@ class TravailEffectue():
 
     def fetchData(self):
         # fetching data
-        semaine_courante = df_formule['Date Actuel'][1]
+        semaine_courante = "Sem 10" #df_formule['Date Actuel'][1]
         data = df_travail_effectue[['Objectif', 'Nom Système', 'NOM', "Pourcentage d'avancement" ,'heures']].dropna()[df_travail_effectue['Semaine'] == semaine_courante]
 
     
@@ -48,10 +48,10 @@ class TravailEffectue():
             # Strips the newline character
             for i, line in enumerate(Lines):
                 if i < len(cell_text):
-                    line = line.replace("tache1", cell_text[i][0])
-                    line = line.replace("sys1", cell_text[i][1])
-                    line = line.replace("res1", cell_text[i][2])
-                    line = line.replace("etat1", cell_text[i][3])
+                    line = line.replace("tache1", cell_text[i][0].replace("&", "\&"))
+                    line = line.replace("sys1", cell_text[i][1].replace("&", "\&"))
+                    line = line.replace("res1", cell_text[i][2].replace("&", "\&"))
+                    line = line.replace("etat1", cell_text[i][3].replace("&", "\&"))
                     line = line.replace("heure1", str(cell_text[i][4]))
                 else: # :'(  :@
                     line = line.replace("tache1", " ")

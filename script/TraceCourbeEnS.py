@@ -46,7 +46,7 @@ class CourbeEnS():
         colD_valeur = list(feuille.iter_cols(min_col=5, max_col=5, min_row=1, max_row=1000, values_only=True))[0]
         index = colD_valeur.index(max(cellule for cellule in colD_valeur if isNumber(cellule)))+1
         heurePrevueParSemaine = []
-        for cell in feuille[F"E{index}":F"T{index}"][0]:
+        for cell in feuille[F"F{index}":F"U{index}"][0]:
             heurePrevueParSemaine.append(cell.value)
         print(heurePrevueParSemaine)
         return heurePrevueParSemaine
@@ -56,7 +56,7 @@ class CourbeEnS():
         index = colB_valeur.index("TOTAL")+1
         
         heureAvancement = []
-        for cell in feuille[F"E{index}":F"T{index}"][0]:
+        for cell in feuille[F"F{index}":F"U{index}"][0]:
             heureAvancement.append(cell.value)
         print(heureAvancement)
         return heureAvancement 
@@ -77,7 +77,7 @@ class CourbeEnS():
     def genereGraphique(self, realProgressHours, BudgetedHours, workedHours):
         #range de date (axe X)
         figure, axe = plt.subplots()
-        axeXDate = pandas.date_range(start="6/5/2021", periods=len(BudgetedHours), freq="7D")
+        axeXDate = pandas.date_range(start="5/6/2021", periods=len(BudgetedHours), freq="7D")
         #trouve la semaine
         semaine = 0
         for index, date in enumerate(axeXDate):

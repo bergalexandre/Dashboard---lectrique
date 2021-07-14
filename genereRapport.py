@@ -18,7 +18,7 @@ def run(*args):
     return subprocess.check_call(['git'] + list(args))
 
 
-def dateActuel(Depart = "6/5/2021"):
+def dateActuel(Depart = "5/6/2021"):
     semaines = pandas.date_range(start=Depart, periods=16, freq="7D") #trimeste = 16 semaines????
     #trouve la semaine courante
     semaineN = 0
@@ -55,9 +55,9 @@ def resizePicture(path, dimension):
 
 
 
-spec = Speciality.INFO
-avancement_objectifs = AvancementObjectifs("../DVP-Feuille-temps.xlsm")
-avancement_objectifs.graphSave()
+spec = Speciality.ELEC
+#avancement_objectifs = AvancementObjectifs("../DVP-Feuille-temps.xlsm")
+#avancement_objectifs.graphSave()
 
 heures_travaillees = HeuresTravaillees(spec, offset=8)
 heures_travaillees.fetchData()
@@ -78,7 +78,7 @@ problemes.fetchData()
 problemes.writeTable()
 
 
-resizePicture("img/progression_objectifs.png", (1336, 405))
+#resizePicture("img/progression_objectifs.png", (1336, 405))
 resizePicture("img/avancement.png", (1185, 483))
 resizePicture("img/Courbe_S.png", (604, 436))
 resizePicture("img/heures_travaillees.png", (511, 342)) 
@@ -86,7 +86,7 @@ resizePicture("img/heures_travaillees.png", (511, 342))
 
 if git_integration == True:
     pull()
-    add("img/progression_objectifs.png")
+    #add("img/progression_objectifs.png")
     add("img/avancement.png")
     add("img/Courbe_S.png")
     add("img/heures_travaillees.png")

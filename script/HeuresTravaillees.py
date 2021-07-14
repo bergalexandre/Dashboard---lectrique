@@ -20,11 +20,12 @@ class HeuresTravaillees():
 
     def fetchData(self):
         # fetching data
-        semaine_courante = df_formule['Date Actuel'][1]
+        semaine_courante = "Sem 10" #df_formule['Date Actuel'][1]
         data = df_travail_effectue[['#Requis', 'NOM', 'Semaine', 'heures']]
 
         # Heures totales et heures systemes
         for i, objectif in data.iterrows():
+            print(objectif['NOM'])
             if objectif['NOM'] in self.heures_travaillees.keys():
                 requis = objectif['#Requis']
                 if semaine_courante == objectif['Semaine']:
