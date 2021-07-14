@@ -9,6 +9,9 @@
 \usepackage{advdate}
 \usepackage{svg}
 \usepackage{xcolor}
+\usepackage{tabularx}
+
+
 % Set main font (Abraham)
 %\setmainfont[
 %    Path = font/Abraham/,
@@ -293,7 +296,7 @@ linewidth=1pt % Width of the border lines around content boxes
 
 % this states the box starts at column 0 (edge of page), row 0 (top of page) for a span of 3 (columns wide)
 \headerbox{Tâches accomplies}{name=taches,column=0,row=0, span=3}{
-{\includegraphics[width=1\linewidth]{img/taches.png}}
+{\input{tableauDeTaches.tex}}
 
 %\vspace{2cm} %remove this, only added for spacing
 
