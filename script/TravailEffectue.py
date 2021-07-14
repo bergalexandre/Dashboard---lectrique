@@ -27,7 +27,6 @@ class TravailEffectue():
             if objectif['NOM'] in self.travail_effectue.keys():
                 self.travail_effectue[objectif['NOM']].append(objectif.values.tolist())
                 if objectif.values.tolist()[3] < 1:
-                    print(objectif['NOM'])
                     self.travail_effectue[objectif['NOM']][-1][3] = 'En Cours'
                 else:
                     self.travail_effectue[objectif['NOM']][-1][3] = 'Terminé'
@@ -46,13 +45,15 @@ class TravailEffectue():
             Lines = tableauFile.readlines()
 
             # Strips the newline character
-            for i, line in enumerate(Lines):
-                if i < len(cell_text):
-                    line = line.replace("tache1", cell_text[i][0].replace("&", "\&"))
-                    line = line.replace("sys1", cell_text[i][1].replace("&", "\&"))
-                    line = line.replace("res1", cell_text[i][2].replace("&", "\&"))
-                    line = line.replace("etat1", cell_text[i][3].replace("&", "\&"))
-                    line = line.replace("heure1", str(cell_text[i][4]))
+            index = 0
+            for line in Lines:
+                if index < len(cell_text) and "tache1" in line:
+                    line = line.replace("tache1", cell_text[index][0].replace("&", "\&").replace("_", " "))
+                    line = line.replace("sys1", cell_text[index][1].replace("&", "\&").replace("_", " "))
+                    line = line.replace("res1", cell_text[index][2].replace("&", "\&").replace("_", " "))
+                    line = line.replace("etat1", cell_text[index][3].replace("&", "\&").replace("_", " "))
+                    line = line.replace("heure1", str(cell_text[index][4]))
+                    index = index + 1
                 else: # :'(  :@
                     line = line.replace("tache1", " ")
                     line = line.replace("sys1", " ")
