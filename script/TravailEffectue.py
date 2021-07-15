@@ -29,7 +29,7 @@ class TravailEffectue():
                     pass #self.travail_effectue[objectif['NOM']][-1][3] = 'En Cours'
                 else:
                     self.travail_effectue[objectif['NOM']].append(objectif.values.tolist())
-                    self.travail_effectue[objectif['NOM']][-1][3] = 'Terminé'
+                    self.travail_effectue[objectif['NOM']][-1].pop(3)
 
 
     def writeTable(self):
@@ -51,14 +51,12 @@ class TravailEffectue():
                     line = line.replace("tache1", cell_text[index][0].replace("&", "\&").replace("_", " "))
                     line = line.replace("sys1", cell_text[index][1].replace("&", "\&").replace("_", " "))
                     line = line.replace("res1", cell_text[index][2].replace("&", "\&").replace("_", " "))
-                    line = line.replace("etat1", cell_text[index][3].replace("&", "\&").replace("_", " "))
                     line = line.replace("heure1", str(cell_text[index][4]))
                     index = index + 1
                 else: # :'(  :@
                     line = line.replace("tache1", " ")
                     line = line.replace("sys1", " ")
                     line = line.replace("res1", " ")
-                    line = line.replace("etat1", " ")
                     line = line.replace("heure1", " ")
                 outputFile.append(line)
                 print(outputFile[-1])

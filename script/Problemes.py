@@ -39,9 +39,9 @@ class Problemes():
             # Strips the newline character
             for i, line in enumerate(Lines):
                 if i < len(cell_text):
-                    line = line.replace("tache1", cell_text[i][2])
-                    line = line.replace("sys1", cell_text[i][1])
-                    line = line.replace("res1", cell_text[i][0])
+                    line = line.replace("tache1", cell_text[i][2].replace("&", "\&").replace("_", " "))
+                    line = line.replace("sys1", cell_text[i][1].replace("&", "\&").replace("_", " "))
+                    line = line.replace("res1", cell_text[i][0].replace("&", "\&").replace("_", " "))
                 else: # :'(
                     line = line.replace("tache1", " ")
                     line = line.replace("sys1", " ")
