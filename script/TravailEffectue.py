@@ -51,7 +51,7 @@ class TravailEffectue():
                     line = line.replace("tache1", cell_text[index][0].replace("&", "\&").replace("_", " "))
                     line = line.replace("sys1", cell_text[index][1].replace("&", "\&").replace("_", " "))
                     line = line.replace("res1", cell_text[index][2].replace("&", "\&").replace("_", " "))
-                    line = line.replace("heure1", str(cell_text[index][4]))
+                    line = line.replace("heure1", str(cell_text[index][3]))
                     index = index + 1
                 else: # :'(  :@
                     line = line.replace("tache1", " ")
