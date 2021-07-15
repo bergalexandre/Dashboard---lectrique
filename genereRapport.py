@@ -79,7 +79,7 @@ problemes.writeTable()
 
 
 #resizePicture("img/progression_objectifs.png", (1336, 405))
-resizePicture("img/avancement.png", (1185, 483))
+#resizePicture("img/avancement.png", (1185, 483))
 resizePicture("img/Courbe_S.png", (604, 436))
 resizePicture("img/heures_travaillees.png", (511, 342)) 
 
