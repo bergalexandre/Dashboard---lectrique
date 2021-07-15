@@ -65,17 +65,17 @@ heures_travaillees.graphSave()
 
 CourbeEnS("../DVP-Feuille-temps.xlsm")
 
-taches_effectuees = TravailEffectue(spec)
+""" taches_effectuees = TravailEffectue(spec)
 taches_effectuees.fetchData()
-taches_effectuees.writeTable()
+taches_effectuees.writeTable() """
 
 avancement_systemes = AvancementSystemes(spec)
 avancement_systemes.fetchData()
 avancement_systemes.graphSave()
 
-problemes = Problemes(spec)
+""" problemes = Problemes(spec)
 problemes.fetchData()
-problemes.writeTable()
+problemes.writeTable() """
 
 
 #resizePicture("img/progression_objectifs.png", (1336, 405))
@@ -90,8 +90,8 @@ if git_integration == True:
     add("img/avancement.png")
     add("img/Courbe_S.png")
     add("img/heures_travaillees.png")
-    add("tableauDeTaches.tex")
-    add("tableauDeProblemes.tex") #frog(?) #WhatTheBread
+    #add("tableauDeTaches.tex")
+    #add("tableauDeProblemes.tex") #frog(?) #WhatTheBread
     commitEtPush()
 
 #budget = Budget(spec)

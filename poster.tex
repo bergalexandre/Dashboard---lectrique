@@ -87,15 +87,15 @@ Créer un véhicule efficace à propulsion électrique pour participer et gagner
 
 }
 
+
 % this states the box starts at column 0 (edge of page), directly below the box labelled introduction for a span of 1 (column wide)
 \headerbox{Objectifs de session}{name=objectif_session,column=1,below=objectif,span=2}{
 
 %\vspace{0.15cm}
-\textit{PROGRESSION DES OBJECTIFS DE SESSION}
+\centering
+{\input{tableaux/objectifs_session}}
 
-{\includegraphics[scale=.54]{img/progression_objectifs.png}}
-
-\vspace{0.2cm} % spacing vertical
+%\vspace{0.2cm} % spacing vertical
 
 }
 
@@ -110,9 +110,8 @@ Créer un véhicule efficace à propulsion électrique pour participer et gagner
     \end{enumerate}
     \item \textbf{Rencontre technique :}
     \begin{enumerate}
-        \item Question sur BMS monitoring
-        \item Question sur algo de contrôle
-        \item Question sur consommation télémétrie
+        \item Question sur Choix des MCU
+        \item Question sur Spécialisation des MCU
     \end{enumerate}
 \end{itemize}
 
@@ -294,9 +293,8 @@ linewidth=1pt % Width of the border lines around content boxes
 {\textsf{{}}} % Titre vide pcq sinon ça plante
 
 
-% this states the box starts at column 0 (edge of page), row 0 (top of page) for a span of 3 (columns wide)
-\headerbox{Objectifs accomplis}{name=taches,column=0,row=0, span=3}{
-{\input{tableauDeTaches.tex}}
+\headerbox{Tâches accomplies}{name=taches,column=0,row=0, span=3}{
+{\input{tableaux/objectifs_accomplis}}
 
 %\vspace{2cm} %remove this, only added for spacing
 
@@ -306,7 +304,7 @@ linewidth=1pt % Width of the border lines around content boxes
 
 \headerbox{Problèmes}{name=problemes,column=0,below=taches,span=3}{
 
-{\input{tableauDeProblemes.tex}}
+{\input{tableaux/problemes}}
 
 %\vspace{.65cm}
 %\begin{itemize}
@@ -333,11 +331,7 @@ linewidth=1pt % Width of the border lines around content boxes
 
 \headerbox{Risques}{name=risques,column=0,span=3,below=systemes}{
 {
-    {
-        \hspace{1cm}
-        \centering
-    	\includegraphics[scale=.46]{img/risques.png}
-    }
+    {\input{tableaux/risques}}
 }
 
 }
@@ -349,7 +343,7 @@ linewidth=1pt % Width of the border lines around content boxes
     \item \textbf{Simulateur :}
     \begin{enumerate}
         \item Implémenter une V2 du simulateur
-        \item Début programmation du dashboard
+        \item Implémenter la simulation LTSpice de l'inverter dans notre simulateur	
     \end{enumerate}
     \item \textbf{Contrôle :}
     \begin{enumerate}
@@ -361,12 +355,12 @@ linewidth=1pt % Width of the border lines around content boxes
     \end{enumerate}
     \item \textbf{Gestion et Documentation :}
     \begin{enumerate}
-        \item Finir l'automatisation du tableau de bord
+        \item Support des gens pour tableau de bord
         \item Finir de remplir le DVP	
     \end{enumerate}
     \end{itemize}
     
-    \vspace{2.5cm} % spacing vertical
+    \vspace{1cm} % spacing vertical
 }
 
 }
@@ -380,7 +374,7 @@ linewidth=1pt % Width of the border lines around content boxes
         \centering
     	\includegraphics[scale=.5]{img/cashflow.png}
     }
-    \vspace{1.15cm} % spacing vertical
+    %\vspace{1.15cm} % spacing vertical
 }
 
 }
