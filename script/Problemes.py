@@ -15,7 +15,7 @@ class Problemes():
 
     def fetchData(self):
         # fetching data
-        semaine_courante = df_formule['Date Actuel'][1]
+        semaine_courante = 'Sem 10' #df_formule['Date Actuel'][1]
         data = df_travail_effectue[['NOM', 'Nom Système', 'Problème']].dropna()[df_travail_effectue['Semaine'] == semaine_courante]
     
         # Heures taches de la semaine

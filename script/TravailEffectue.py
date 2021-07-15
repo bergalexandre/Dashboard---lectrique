@@ -25,10 +25,10 @@ class TravailEffectue():
         # Heures taches de la semaine
         for i, objectif in data.iterrows():
             if objectif['NOM'] in self.travail_effectue.keys():
-                self.travail_effectue[objectif['NOM']].append(objectif.values.tolist())
                 if objectif.values.tolist()[3] < 1:
-                    self.travail_effectue[objectif['NOM']][-1][3] = 'En Cours'
+                    pass #self.travail_effectue[objectif['NOM']][-1][3] = 'En Cours'
                 else:
+                    self.travail_effectue[objectif['NOM']].append(objectif.values.tolist())
                     self.travail_effectue[objectif['NOM']][-1][3] = 'Terminé'
 
 
