@@ -41,6 +41,7 @@ class Systeme():
     MOTEUR          = {'name':'Moteur et Transmission', 'number':'MOT1', 'hours':500}
     BATTERIE        = {'name':'Batterie/BMS', 'number':'BAT1', 'hours':500}
     
+    ALL = [SIMULATEUR, INSTRUMENTATION, CONTROLE, GESTION, ERGONOMIE, COQUE, CHASSIS, DIRECTION, FREIN, THERMIQUE, SUSPENSION, MOTEUR, BATTERIE]
 
     def mapSysteme(number):
         """[Switch case pour aller chercher un objet Systeme avec le numéro de système]
