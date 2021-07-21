@@ -1,4 +1,5 @@
 from datetime import datetime
+import numpy
 import openpyxl
 import matplotlib.pyplot as plt
 import pandas
@@ -86,9 +87,17 @@ class CourbeEnS():
                 break
         
         axe.plot(BudgetedHours, "k")
-        axe.plot(range(index+1), workedHours[:semaine+1], "g--")
-        axe.plot(range(index+1), realProgressHours[:semaine+1], "b")
-        axe.plot(range(index, len(BudgetedHours)), workedHours[index:], "r--")
+
+        #jusqu'à la semaine 8, worked hours = realprogress = budgeted hour
+        #TODO: retirer pour prochaine session
+        hoursOffset = numpy.array((BudgetedHours[:8] + ([BudgetedHours[8]]*(16-8))))
+
+        axe.plot(range(index+1), hoursOffset[:semaine+1] + workedHours[:semaine+1], "g--")
+        axe.plot(range(index+1), hoursOffset[:semaine+1] + realProgressHours[:semaine+1], "b")
+
+        #deltaAvancement = BudgetedHours[index] - workedHours[index]
+        #axe.plot(range(index, len(BudgetedHours)), list((heureTotal-deltaAvancement) for heureTotal in BudgetedHours[index:]), "r--")
+        
         axe.set_xticks(range(len(BudgetedHours)))
         plt.xticks(rotation=45)
         axe.set_xticklabels(axeXDate.strftime("%Y-%m-%d"))
