@@ -36,6 +36,9 @@
   {\begin{enumerate}\renewcommand\labelenumi{\textbf\theenumi.}}
   {\end{enumerate}}
 
+\usepackage{enumitem}
+\setlist[1]{leftmargin=2em}
+\setlist[2]{leftmargin=2em}
 
 \begin{document}
 
@@ -69,11 +72,11 @@ linewidth=1pt % Width of the border lines around content boxes
 %	TITLE AND AUTHOR NAME
 %----------------------------------------------------------------------------------------
 %
-{\textsf{{Tableau de bord - Éco-Marathon Shell 2023}}} % Titre en Sans Serif
+{\textsf{{Tableau de bord - Éco-marathon Shell 2023}}} % Titre en Sans Serif
 {\sf\vspace{0.1em}\\
 Électrique  -  {\AdvanceDate[0]\today} 
 \vspace{0.1em}\\
-\small{ Période couverte du {\AdvanceDate[-7]\today} au {\AdvanceDate[0]\today}
+\small{ Période couverte du {\AdvanceDate[-9]\today} au {\AdvanceDate[-3]\today}
 }
 }
 {\includegraphics[width=.1\linewidth]{img/udes.png}} % TU Dublin logo
@@ -81,11 +84,8 @@ linewidth=1pt % Width of the border lines around content boxes
 
 % this states the box starts at column 0 (edge of page), row 0 (top of page) for a span of 3 (columns wide)
 \headerbox{Objectif de projet}{name=objectif,column=0,row=0, span=3}{
-Créer un véhicule efficace à propulsion électrique pour participer et gagner la compétition Shell-éco marathon dans la division ''véhicule urbain'' en 2023.\\
+Créer un véhicule efficace à propulsion électrique pour participer et gagner la compétition Shell Eco-marathon dans la division ``véhicule urbain'' en 2023.\\[15pt]
 \textbf{QUOTE} : If you are \textit{PERSISTENT} you will get it. If you are \textit{CONSISTENT} you will keep it.
- 
-\vspace{2cm} %remove this, only added for spacing
-
 }
 
 
@@ -111,8 +111,8 @@ Créer un véhicule efficace à propulsion électrique pour participer et gagner
     \end{enumerate}
     \item \textbf{Rencontre technique :}
     \begin{enumerate}
-        \item À FAIRE***
-        \item À FAIRE***
+        \item Chip BMS et active balancing
+        \item Repo git pour batterie pack et BMS
     \end{enumerate}
 \end{itemize}
 
@@ -343,16 +343,16 @@ linewidth=1pt % Width of the border lines around content boxes
     \begin{itemize}
     \item \textbf{Moteur et Transmission :}
     \begin{enumerate}
-        \item Terminer CAD préléminaire pour le design review MEC et ÉLEC.
-        \item À AJOUTER AU BESOIN***	
+        \item Terminer CAD préliminaire pour la revue de conception (MEC / ELEC).
     \end{enumerate}
     \item \textbf{Contrôle moteur et Onduleur :}
     \begin{enumerate}
-        \item À FAIRE***
+        \item Design review de la schématique et simulation du circuit
     \end{enumerate}
     \item \textbf{Batterie BMS et Instrumentation :}
     \begin{enumerate}
-        \item À FAIRE***					
+        \item Finaliser le design des convertisseurs
+        \item Design du BMS avec la chip intégrée
     \end{enumerate}
     \item \textbf{Simulateur et Transferts Thermiques :}
     \begin{enumerate}
@@ -369,11 +369,11 @@ linewidth=1pt % Width of the border lines around content boxes
 \headerbox{Cashflow}{name=cashflow,column=0,span=2,below=risques}{
 {
 
-    \vspace{.6cm} % spacing vertical
+    % \vspace{.6cm} % spacing vertical
     {
         \hspace{1cm}
         \centering
-    	\includegraphics[scale=.5]{img/cashflow.png}
+    	\includegraphics[width=0.85\linewidth]{img/cashflow.pdf}
     }
     %\vspace{1.15cm} % spacing vertical
 }
