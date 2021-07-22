@@ -94,10 +94,10 @@ class AvancementSystemes():
         width, height = img.size
 
         left = 1
-        top = height / 8
+        top = height / 4.5
         right = width
-        bottom = 3 * height / 4       
+        bottom = 2 * height / 3       
 
         img = img.crop([left, top, right, bottom])
-        #img.show()
+        img.show()
         img.save('img/avancement.png')
