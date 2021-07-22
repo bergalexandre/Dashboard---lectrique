@@ -83,7 +83,7 @@ class AvancementSystemes():
                 kw = dict(arrowprops=dict(arrowstyle="-"),
                         bbox=bbox_props, zorder=0, va="center")
 
-                axs[index].annotate(str(round(data[s]['Avancement réel'] * 100, 0)) +
+                axs[index].annotate(str(round(data[s]['Avancement réel'] * 100)) +
                             "%", xy=(0, 0), ha='center', va='center')
                 axs[index].set_title(s, y=1.1)
                 index = index + 1
