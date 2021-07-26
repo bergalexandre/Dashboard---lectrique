@@ -86,14 +86,14 @@ class CourbeEnS():
                 semaine = index
                 break
         
-        axe.plot(BudgetedHours, "k")
+        axe.plot(BudgetedHours, "b")
 
         #jusqu'à la semaine 8, worked hours = realprogress = budgeted hour
         #TODO: retirer pour prochaine session
         hoursOffset = numpy.array((BudgetedHours[:8] + ([BudgetedHours[8]]*(16-8))))
 
-        axe.plot(range(index+1), hoursOffset[:semaine+1] + workedHours[:semaine+1], "g--")
-        axe.plot(range(index+1), hoursOffset[:semaine+1] + realProgressHours[:semaine+1], "b")
+        axe.plot(range(index+1), hoursOffset[:semaine+1] + workedHours[:semaine+1], "r--")
+        axe.plot(range(index+1), hoursOffset[:semaine+1] + realProgressHours[:semaine+1], "g")
 
         #deltaAvancement = BudgetedHours[index] - workedHours[index]
         #axe.plot(range(index, len(BudgetedHours)), list((heureTotal-deltaAvancement) for heureTotal in BudgetedHours[index:]), "r--")
@@ -101,5 +101,6 @@ class CourbeEnS():
         axe.set_xticks(range(len(BudgetedHours)))
         plt.xticks(rotation=45)
         axe.set_xticklabels(axeXDate.strftime("%Y-%m-%d"))
-        axe.legend(("heures totales", "Heures travaillées", "Heures acquises", "heures restantes"))
+        axe.legend(("CBTP : Heures totales", "CRTE : Heures travaillées", "CBTE : Heures acquises"))
+        #plt.show()
         plt.savefig('img/courbe_S.png', bbox_inches='tight')
