@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
-from PIL import Image
+# from PIL import Image
 from copy import copy
 from datetime import date
 from script.utils import *
@@ -57,7 +57,7 @@ class AvancementSystemes():
         for i, s in enumerate(data):
             if Systeme.mapSysteme(s) in self.specialty['systemes']:
                 x = x + 1
-        fig, axs = plt.subplots(1, x, figsize=(6, 3), subplot_kw=dict(aspect="equal"),constrained_layout=True)
+        fig, axs = plt.subplots(1, x, figsize=(6, 3), subplot_kw=dict(aspect="equal"),constrained_layout=False)
         # Data prep
         index = 0
         for s in data:
@@ -87,17 +87,5 @@ class AvancementSystemes():
                             "%", xy=(0, 0), ha='center', va='center')
                 axs[index].set_title(s, y=1.1)
                 index = index + 1
-        plt.tight_layout()
-        plt.savefig('img/avancement.png', dpi=400)
-        
-        img = Image.open(r"img/avancement.png")
-        width, height = img.size
-
-        left = 1
-        top = height / 4.5
-        right = width
-        bottom = 2 * height / 3       
-
-        img = img.crop([left, top, right, bottom])
-        #img.show()
-        img.save('img/avancement.png')
+        # plt.tight_layout()
+        plt.savefig('img/avancement.pdf', bbox_inches="tight", dpi=96)

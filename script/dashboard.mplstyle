@@ -1,0 +1,20 @@
+lines.antialiased : True
+patch.antialiased : True
+font.family : serif
+font.weight : normal
+font.size : 12
+font.serif : Times New Roman, serif
+text.antialiased : True
+legend.loc : best
+legend.frameon : True
+legend.framealpha : 0.7
+legend.facecolor : inherit
+# legend.edgecolor : 0
+legend.fancybox : True
+figure.autolayout : True
+
+# Only if TeX is installed on your computer
+# text.usetex : True
+# text.latex.preamble : \usepackage{amsmath},\usepackage{pgfplots},\usepackage[T1]{fontenc}
+# mathtext.fontset : cm
+# axes.unicode_minus : True

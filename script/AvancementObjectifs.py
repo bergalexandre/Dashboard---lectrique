@@ -48,4 +48,4 @@ class AvancementObjectifs():
         axes.set_xlabel("Avancement %")
         axes.set_title("Avancement systèmes")
 
-        plt.savefig('img/progression_objectifs.png')
+        plt.savefig('img/progression_objectifs.pdf', dpi=96)

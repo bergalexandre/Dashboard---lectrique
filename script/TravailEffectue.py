@@ -84,4 +84,4 @@ class TravailEffectue():
         #[t.set_fontsize(8) for t in [tab1, tab2]]
 
         table.auto_set_column_width(col=list(range(len(column_headers)))) # Provide integer list of columns to adjust
-        plt.savefig('img/taches.png', transparent=True, bbox_inches='tight', pad_inches=0, dpi=450)
+        plt.savefig('img/taches.pdf', transparent=True, bbox_inches='tight', pad_inches=0, dpi=96)

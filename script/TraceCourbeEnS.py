@@ -103,4 +103,4 @@ class CourbeEnS():
         axe.set_xticklabels(axeXDate.strftime("%Y-%m-%d"))
         axe.legend(("CBTP : Heures totales", "CRTE : Heures travaillées", "CBTE : Heures acquises"))
         #plt.show()
-        plt.savefig('img/courbe_S.png', bbox_inches='tight')
+        plt.savefig('img/Courbe_S.pdf', bbox_inches='tight', dpi=96)
