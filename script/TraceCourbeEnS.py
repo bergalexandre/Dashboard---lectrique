@@ -1,13 +1,13 @@
-from datetime import datetime
 import numpy
 import openpyxl
 import matplotlib.pyplot as plt
-import pandas
+import pandas as pd
+from script.utils import DATES, SHEETS
 
 # apparament python peut pas te dire si l'objet est numérique pour un float
 def isNumber(s):
     try:
-        if(s is not None):
+        if s is not None:
             complex(s) # for int, long, float and complex
         else:
             return False
@@ -15,6 +15,19 @@ def isNumber(s):
         return False
 
     return True
+
+
+def findWeek(dates = None, start = DATES["SEMESTER_START"], periods = 16):
+    if dates is None:
+        dates = pd.date_range(start=start, periods=periods, freq="7D") #trimeste = 16 semaines????
+
+    # Find current week
+    week = 0
+    for _, date in enumerate(dates):
+        if date > DATES["TODAY"]:
+            break
+        week += 1
+    return week
 
 
 class CourbeEnS():
@@ -29,16 +42,16 @@ class CourbeEnS():
         heureProgress = []
         heureTravailler = []
 
-        if(self.previsionSheetName in self.wb.sheetnames):
-            previsionSheet = self.wb[self.previsionSheetName]
+        if(SHEETS["CBTP"] in self.wb.sheetnames):
+            previsionSheet = self.wb[SHEETS["CBTP"]]
             heurePrevue = self.heurePrevue(previsionSheet)
 
-        if(self.progressSheetName in self.wb.sheetnames):
-            progressSheet = self.wb[self.progressSheetName]
+        if(SHEETS["CBTE"] in self.wb.sheetnames):
+            progressSheet = self.wb[SHEETS["CBTE"]]
             heureProgress = self.heureProgress(progressSheet)
 
-        if(self.workSheetName in self.wb.sheetnames):
-            workSheet = self.wb[self.workSheetName]
+        if(SHEETS["CRTE"] in self.wb.sheetnames):
+            workSheet = self.wb[SHEETS["CRTE"]]
             heureTravailler = self.heureTravailler(workSheet)
 
         self.genereGraphique(heureProgress, heurePrevue, heureTravailler)
@@ -46,7 +59,7 @@ class CourbeEnS():
     def heurePrevue(self, feuille):
         colD_valeur = list(feuille.iter_cols(min_col=5, max_col=5, min_row=1, max_row=1000, values_only=True))[0]
         index = colD_valeur.index(max(cellule for cellule in colD_valeur if isNumber(cellule)))+1
-        heurePrevueParSemaine = []
+        heurePrevueParSemaine = list()
         for cell in feuille[F"F{index}":F"U{index}"][0]:
             heurePrevueParSemaine.append(cell.value)
         print(heurePrevueParSemaine)
@@ -56,7 +69,7 @@ class CourbeEnS():
         colB_valeur = list(feuille.iter_cols(min_col=2, max_col=2, min_row=1, max_row=1000, values_only=True))[0]
         index = colB_valeur.index("TOTAL")+1
         
-        heureAvancement = []
+        heureAvancement = list()
         for cell in feuille[F"F{index}":F"U{index}"][0]:
             heureAvancement.append(cell.value)
         print(heureAvancement)
@@ -67,40 +80,33 @@ class CourbeEnS():
         colB_valeur = list(feuille.iter_cols(min_col=2, max_col=2, min_row=1, max_row=50, values_only=True))[0]
         index = colB_valeur.index("Total")+1
         
-        heureParSemaine = []
+        heureParSemaine = list()
         for cell in feuille[F"D{index}":F"S{index}"][0]:
             heureParSemaine.append(cell.value)
         print(heureParSemaine)
         return heureParSemaine
 
 
-
     def genereGraphique(self, realProgressHours, BudgetedHours, workedHours):
         #range de date (axe X)
-        figure, axe = plt.subplots()
-        axeXDate = pandas.date_range(start="5/6/2021", periods=len(BudgetedHours), freq="7D")
-        #trouve la semaine
-        semaine = 0
-        for index, date in enumerate(axeXDate):
-            if date > datetime.today():
-                semaine = index
-                break
-        
-        axe.plot(BudgetedHours, "b")
+        _, ax = plt.subplots()
+        dates = pd.date_range(start=DATES["SEMESTER_START"], periods=len(BudgetedHours), freq="7D")
+        week = findWeek(dates=dates)
+        ax.plot(BudgetedHours, "b")
 
         #jusqu'à la semaine 8, worked hours = realprogress = budgeted hour
         #TODO: retirer pour prochaine session
         hoursOffset = numpy.array((BudgetedHours[:8] + ([BudgetedHours[8]]*(16-8))))
 
-        axe.plot(range(index+1), hoursOffset[:semaine+1] + workedHours[:semaine+1], "r--")
-        axe.plot(range(index+1), hoursOffset[:semaine+1] + realProgressHours[:semaine+1], "g")
+        ax.plot(range(week+1), hoursOffset[:week+1] + workedHours[:week+1], "r--")
+        ax.plot(range(week+1), hoursOffset[:week+1] + realProgressHours[:week+1], "g")
 
         #deltaAvancement = BudgetedHours[index] - workedHours[index]
-        #axe.plot(range(index, len(BudgetedHours)), list((heureTotal-deltaAvancement) for heureTotal in BudgetedHours[index:]), "r--")
+        #ax.plot(range(index, len(BudgetedHours)), list((heureTotal-deltaAvancement) for heureTotal in BudgetedHours[index:]), "r--")
         
-        axe.set_xticks(range(len(BudgetedHours)))
-        plt.xticks(rotation=45)
-        axe.set_xticklabels(axeXDate.strftime("%Y-%m-%d"))
-        axe.legend(("CBTP : Heures totales", "CRTE : Heures travaillées", "CBTE : Heures acquises"))
+        ax.set_xticks(range(len(BudgetedHours)))
+        ax.set_xticklabels(dates.strftime("%Y-%m-%d"))
+        plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+        ax.legend(("CBTP : Heures totales", "CRTE : Heures travaillées", "CBTE : Heures acquises"))
         #plt.show()
         plt.savefig('img/Courbe_S.pdf', bbox_inches='tight', dpi=96)

@@ -2,7 +2,7 @@ import random
 from matplotlib import pyplot as plt
 import pandas as pd
 import numpy as np
-from script.utils import *
+from script.utils import PATHS, DATA
 
 
 class HeuresTravaillees():
@@ -18,8 +18,8 @@ class HeuresTravaillees():
 
     def fetchData(self):
         # fetching data
-        semaine_courante = df_formule['Date Actuel'][1]
-        data = df_travail_effectue[['#Requis', 'NOM', 'Semaine', 'heures']]
+        semaine_courante = DATA.FORMULA['Date Actuel'][1]
+        data = DATA.CRTE[['#Requis', 'NOM', 'Semaine', 'heures']]
 
         # Heures totales et heures systemes
         for i, objectif in data.iterrows():
@@ -30,13 +30,12 @@ class HeuresTravaillees():
                     self.heures_travaillees[objectif['NOM']][requis[0:4]
                                                              ] = self.heures_travaillees[objectif['NOM']][requis[0:4]] + objectif['heures']
                 self.heures_travaillees[objectif['NOM']]['heures totales'] = self.heures_travaillees[objectif['NOM']
-                                                                                                     ]['heures totales'] + df_travail_effectue['heures'][i]
+                                                                                                     ]['heures totales'] + DATA.CRTE['heures'][i]
 
         # Calcul de la moyenne des heures
         x = int(semaine_courante.split()[1])
         for membre in self.heures_travaillees:
-            self.heures_travaillees[membre]['moyenne hebdo'] = self.heures_travaillees[membre]['heures totales'] / (
-                x - self.offset)
+            self.heures_travaillees[membre]['moyenne hebdo'] = self.heures_travaillees[membre]['heures totales'] / (x - self.offset)
 
     def graphSave(self):
         fig, axes = plt.subplots()
@@ -77,5 +76,5 @@ class HeuresTravaillees():
             axes.plot(indexMembre, moyennes_hebdo[indexMembre],
                       "ko" if moyennes_hebdo[indexMembre] >= 9 else "kx")
         plt.xlim([-1, len(self.heures_travaillees)])
-        plt.xticks(rotation=45)
-        plt.savefig("img/heures_travaillees.pdf", bbox_inches='tight', dpi=96)
+        plt.setp(axes.xaxis.get_majorticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+        plt.savefig(PATHS["HOURS"], bbox_inches='tight', dpi=96)

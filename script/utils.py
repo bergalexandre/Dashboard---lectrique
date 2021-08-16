@@ -1,24 +1,69 @@
 import pandas as pd
 from datetime import date
+from collections import namedtuple
 
+##################################################
+### GLOBAL VARIABLES                           ###
+##################################################
 
-# GLOBAL VARS
-today = date.today()
+DATES = {
+    "TODAY" : date.today(),
+    "SEMESTER_START" : "5/6/2021"
+}
 
-df_travail_effectue = pd.read_excel(
-    io='../DVP-Feuille-temps.xlsm', sheet_name='Travail_Effectue', usecols='A:L', engine='openpyxl')
+PATHS = {
+    "ADVANCEMENT" : "img/avancement.pdf",
+    "CURVE" : "img/Courbe_S.pdf",
+    "DVP" : "../DVP-Feuille-Temps.xlsm",
+    "HOURS" : "img/heures_travaillees.pdf",
+    "ISSUES" : "tableauDeProblemes.tex",
+    "OBJECTIVES" : "img/progression_objectifs.png",
+    "STYLE" : "./script/dashboard.mplstyle",
+    "TASKS" : "tableauDeTaches.tex"
+}
 
-df_DVP = pd.read_excel(
-    io='../DVP-Feuille-temps.xlsm', sheet_name='DVP', header=1, usecols='B:M', engine='openpyxl')
+SHEETS = {
+    "CBTP" : "Prevision_Courbe_S",
+    "CRTE" : "Travail_Courbe_S",
+    "CBTE" : "Avancement_Courbe_S"
+}
 
-df_Prevision_Courbe_S = pd.read_excel(
-    io='../DVP-Feuille-temps.xlsm', sheet_name='Prevision_Courbe_S', header=2, usecols='B:U', engine='openpyxl')
+DATA_DVP = pd.read_excel(
+    io         = PATHS["DVP"], 
+    sheet_name = 'DVP',
+    header     = 1,
+    usecols    = 'B:M',
+    engine     = 'openpyxl'
+)
+DATA_CBTP = pd.read_excel(
+    io         = PATHS["DVP"],
+    sheet_name = 'Prevision_Courbe_S',
+    header     = 2,
+    usecols    = 'B:U',
+    engine     = 'openpyxl'
+)
+DATA_CRTE = pd.read_excel(
+    io         = PATHS["DVP"],
+    sheet_name = 'Travail_Effectue',
+    usecols    = 'A:L',
+    engine     = 'openpyxl'
+)
+DATA_CBTE = pd.read_excel(
+    io         = PATHS["DVP"],
+    sheet_name = 'Avancement_Courbe_S',
+    header     = 2,
+    usecols    = 'B:U',
+    engine     = 'openpyxl'
+)
+DATA_FORMULA = pd.read_excel(
+    io         = PATHS["DVP"],
+    sheet_name = 'Formule',
+    usecols    = 'v',
+    engine     = 'openpyxl'
+)
 
-df_Avancement_Courbe_S = pd.read_excel(
-    io='../DVP-Feuille-temps.xlsm', sheet_name='Avancement_Courbe_S', header=2, usecols='B:U', engine='openpyxl')
-
-df_formule = pd.read_excel(io='../DVP-Feuille-temps.xlsm',
-                           sheet_name='Formule', usecols='v', engine='openpyxl')
+Sheets = namedtuple('Sheets', ['DVP', 'CBTP', 'CRTE', 'CBTE', 'FORMULA'])
+DATA   = Sheets(DVP=DATA_DVP, CBTP=DATA_CBTP, CRTE=DATA_CRTE, CBTE=DATA_CBTE, FORMULA=DATA_FORMULA) 
 
 
 class Systeme():
@@ -43,6 +88,7 @@ class Systeme():
     
     ALL = [SIMULATEUR, INSTRUMENTATION, CONTROLE, GESTION, ERGONOMIE, COQUE, CHASSIS, DIRECTION, FREIN, THERMIQUE, SUSPENSION, MOTEUR, BATTERIE]
 
+    @staticmethod
     def mapSysteme(number):
         """[Switch case pour aller chercher un objet Systeme avec le numéro de système]
 
@@ -74,8 +120,8 @@ class Speciality():
     """[Classe pour les différentes équipes du projet contenant les systèmes de chaque équipes ainsi que les membres]
     """
     INFO = {'systemes': [Systeme.SIMULATEUR, Systeme.INSTRUMENTATION, Systeme.CONTROLE, Systeme.ERGONOMIE, Systeme.GESTION],
-            'membres': {'Louis Tardif':{'initials': 'L.T.'}, 'Alexandre Bergeron':{'initials': 'A.B.'}, 'Claude Garrison-Pelletier':{'initials': 'C.G.P.'}, 'Malik Claveau':{'initials': 'M.C.'}, 'Marian Lambert-Rivest':{'initials': 'M.L.R.'}, 'Gabriel Quirion':{'initials': 'G.Q.'}, 'Mathieu Parent':{'initials': 'M.P.'}, 'William Rousseau':{'initials': 'W.R.'}, 'Charles-Etienne Granger':{'initials': 'C.E.G.'}}}
+            'membres': {'Louis Tardif':{'initials': 'L. T.'}, 'Alexandre Bergeron':{'initials': 'A. B.'}, 'Claude Garrison-Pelletier':{'initials': 'C. G.-P.'}, 'Malik Claveau':{'initials': 'M. C.'}, 'Marian Lambert-Rivest':{'initials': 'M. L.-R.'}, 'Gabriel Quirion':{'initials': 'G. Q.'}, 'Mathieu Parent':{'initials': 'M. P.'}, 'William Rousseau':{'initials': 'W. R.'}, 'Charles-Etienne Granger':{'initials': 'C.-E. G.'}}}
     MECA = {'systemes': [Systeme.SIMULATEUR, Systeme.COQUE, Systeme.CHASSIS, Systeme.DIRECTION, Systeme.FREIN, Systeme.THERMIQUE, Systeme.SUSPENSION, Systeme.ERGONOMIE, Systeme.GESTION],
-            'membres': {'Joé Morin':{'initials': 'J.M.'}, 'Gabriel Ouellet':{'initials': 'G.O.'}, 'Donald Brouillard':{'initials': 'D.B.'}, 'Alexandre Dumont':{'initials': 'A.D.'}, "Jean-Simon D'Amours-Cyr":{'initials': 'J.S.D.C.'}, 'Jérémi Hamelin':{'initials': 'J.H.'}, 'Anthony Martin':{'initials': 'A.M.'}, 'Charles Ouzilleau':{'initials': 'C.O.'}, 'Marco Roger':{'initials': 'M.R.'}}}
+            'membres': {'Joé Morin':{'initials': 'J. M.'}, 'Gabriel Ouellet':{'initials': 'G. O.'}, 'Donald Brouillard':{'initials': 'D. B.'}, 'Alexandre Dumont':{'initials': 'A. D.'}, "Jean-Simon D'Amours-Cyr":{'initials': 'J.-S. D.-C.'}, 'Jérémi Hamelin':{'initials': 'J. H.'}, 'Anthony Martin':{'initials': 'A. M.'}, 'Charles Ouzilleau':{'initials': 'C. O.'}, 'Marco Roger':{'initials': 'M. R.'}}}
     ELEC = {'systemes': [Systeme.SIMULATEUR, Systeme.INSTRUMENTATION, Systeme.CONTROLE, Systeme.MOTEUR, Systeme.BATTERIE, Systeme.GESTION, Systeme.THERMIQUE],
-            'membres': {'Vincent Bonneau':{'initials': 'V.B.'}, 'Marc-Antoine Dubreuil':{'initials': 'M.A.D.'}, 'Jérôme Gelé':{'initials': 'J.G.'}, 'François Paquette':{'initials': 'F.P.'}, 'Loïc Poirier':{'initials': 'L.P.'}, 'Joël Grégoire-Lagueux':{'initials': 'J.G.L.'}, 'Gabriel Cabana':{'initials': 'G.C.'}, 'Thomas Chagnon':{'initials': 'T.C.'}, 'Xavier Morin':{'initials': 'X.M.'}}}
+            'membres': {'Vincent Bonneau':{'initials': 'V. B.'}, 'Marc-Antoine Dubreuil':{'initials': 'M.-A. D.'}, 'Jérôme Gelé':{'initials': 'J. G.'}, 'François Paquette':{'initials': 'F. P.'}, 'Loïc Poirier':{'initials': 'L. P.'}, 'Joël Grégoire-Lagueux':{'initials': 'J.G.-L.'}, 'Gabriel Cabana':{'initials': 'G. C.'}, 'Thomas Chagnon':{'initials': 'T. C.'}, 'Xavier Morin':{'initials': 'X. M.'}}}
