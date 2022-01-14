@@ -10,6 +10,7 @@
 \usepackage{svg}
 \usepackage{xcolor}
 \usepackage{tabularx}
+\usepackage{enumitem}
 
 
 % Set main font (Abraham)
@@ -36,9 +37,6 @@
   {\begin{enumerate}\renewcommand\labelenumi{\textbf\theenumi.}}
   {\end{enumerate}}
 
-\usepackage{enumitem}
-\setlist[1]{leftmargin=2em}
-\setlist[2]{leftmargin=2em}
 
 \begin{document}
 
@@ -72,50 +70,46 @@ linewidth=1pt % Width of the border lines around content boxes
 %	TITLE AND AUTHOR NAME
 %----------------------------------------------------------------------------------------
 %
-{\textsf{{Tableau de bord - Éco-marathon Shell 2023}}} % Titre en Sans Serif
+{\textsf{{Tableau de bord - Éco-Marathon Shell 2023}}} % Titre en Sans Serif
 {\sf\vspace{0.1em}\\
 Électrique  -  {\AdvanceDate[0]\today} 
 \vspace{0.1em}\\
-\small{ Période couverte du {\AdvanceDate[-9]\today} au {\AdvanceDate[-3]\today}
+\small{ Période couverte du {\AdvanceDate[-7]\today} au {\AdvanceDate[0]\today}
 }
 }
-{\includegraphics[width=.1\linewidth]{img/udes.pdf}} % TU Dublin logo
+{\includegraphics[width=.1\linewidth]{img/udes.png}} % TU Dublin logo
 
-
-% this states the box starts at column 0 (edge of page), row 0 (top of page) for a span of 3 (columns wide)
 \headerbox{Objectif de projet}{name=objectif,column=0,row=0, span=3}{
-Créer un véhicule efficace à propulsion électrique pour participer et gagner la compétition Shell Eco-marathon dans la division ``véhicule urbain'' en 2023.\\[15pt]
-\textbf{QUOTE} : On veut le beurre et l'argent du beurre.
+Créer un véhicule efficace à propulsion électrique pour participer et gagner la compétition Shell-éco marathon dans la division ''véhicule urbain'' en 2023
+
+\vspace{0.2cm} %vertical spacing
 }
 
 
-% this states the box starts at column 0 (edge of page), directly below the box labelled introduction for a span of 1 (column wide)
 \headerbox{Objectifs de session}{name=objectif_session,column=1,below=objectif,span=2}{
 
 %\vspace{0.15cm}
 \centering
 {\input{tableaux/objectifs_session}}
 
-%\vspace{0.2cm} % spacing vertical
+\vspace{0.4cm} % spacing vertical
 
 }
 
-% this states the box starts at column 0 (edge of page), directly below the box labelled subtopic1 for a span of 1 (column wide)
 \headerbox{Ordre du jour}{name=ordre_jour,column=0,below=objectif,span=1}{
-
+\vspace{0.1cm}
 \begin{itemize}
     \item \textbf{Rencontre gestion :}
     \begin{enumerate}
-        \item Red flags 
-        \item Tour de table sur les avancements des objectifs
-    \end{enumerate}
-    \item \textbf{Rencontre technique :}
-    \begin{enumerate}
-        \item Overview complet des systèmes
+        \item Premier truc à parler gestion
+        \item Deuxième truc à parler gestion
+        \item Troisième truc à parler gestion
+        \item Quatrième truc à parler gestion
+        \item Cinquième truc à parler gestion
     \end{enumerate}
 \end{itemize}
 
-\vspace{0.05cm} % spacing vertical
+\vspace{.84cm} % spacing vertical
 }
 
 \headerbox{Membres}{name=membres,column=2,below=ordre_jour,span=1}{
@@ -218,27 +212,7 @@ Transferts thermiques
 
 
 \vspace{1cm}
-%\begin{wrapfigure}[8]{r}{0.25\textwidth}
-%\includegraphics[width=.9\linewidth]{DevOps.png} 
-%\includegraphics[width=.9\linewidth]{DevOps.png} 
-%\end{wrapfigure}
-%
-%\vspace{0.3cm}
-%\subsubsection*{2. Another sub section:}
-%
-%Subsection description
-%
-%\vspace{2.3cm} %remove this, only added for spacing
-%
-%\begin{wrapfigure}[5]{r}{0.25\textwidth}
-%\includegraphics[width=.9\linewidth]{TUDublin.jpg} 
-%\end{wrapfigure}
-%
-%\vspace{0.35cm}
-%\subsubsection*{3. Another sub section:}
-%Final Subsection description
-%
-%\vspace{2cm} %remove this, only added for spacing
+
 }
 
 
@@ -291,99 +265,27 @@ linewidth=1pt % Width of the border lines around content boxes
 }
 {}
 {\textsf{{}}} % Titre vide pcq sinon ça plante
+\hfill \break % Ligne vide pcq sinon ça plante
+
+\headerbox{Objectifs deux semaines}{name=objectifs,column=0, row=0, span=3}{{\input{tableaux/taches_accomplies}}}
 
 
-\headerbox{Tâches accomplies}{name=taches,column=0,row=0, span=3}{
-{\input{tableaux/taches_accomplies}}
-
-%\vspace{2cm} %remove this, only added for spacing
-
+\headerbox{Problèmes}{name=problemes,column=0,span=3,below=objectifs}{
+\input{tableaux/problemes}
 }
 
-% this states the box starts at column 0 (edge of page), directly below the box labelled subtopic1 for a span of 1 (column wide)
-
-\headerbox{Problèmes}{name=problemes,column=0,below=taches,span=3}{
-
-{\input{tableaux/problemes}}
-
-%\vspace{.65cm}
-%\begin{itemize}
-%    \item \textbf{Faire un schéma de dataflow du simulateur:} Mauvais compréhension du flow de données du %simulateur dans l'équipe informatique				
-%    \item \textbf{Peux pas entrer les heures dans le DVP:} Courbe en S est pas représentative.	
-%    \end{itemize}%
-
-%    \vspace{1.8cm} % spacing vertical
-
+\headerbox{Risques}{name=risques,column=0,span=3,below=problemes}{
+\input{tableaux/risques}
 }
 
-% this states the box starts at column 0 (edge of page), directly below the box labelled introduction for a span of 1 (column wide)
-\headerbox{Avancement systèmes}{name=systemes,column=0,below=problemes,span=3}{
-
-%\vspace{0.15cm}
-\centering
-{\includegraphics[width=1\linewidth]{img/avancement.pdf}}
-
-%\vspace{0.2cm} % spacing vertical
-
-}
-
-
-
-\headerbox{Risques}{name=risques,column=0,span=3,below=systemes}{
-{
-    {\input{tableaux/risques}}
-}
-
-}
-
-\headerbox{Objectifs semaine prochaine}{name=objectifs_prochain,column=2,span=1,below=risques}{
-{
-    % \vspace{.65cm}
-    \begin{itemize}
-    \item \textbf{Moteur et Transmission :}
-    \begin{enumerate}
-        \item Terminer l'analyse analytique des efforts dans les shafts de transmission pour pouvoir dimensionner les shafts correctement.
-        \item Modifier les pièces en fonction du retour de la revue de conception.
-    \end{enumerate}
-    \item \textbf{Contrôle moteur et Onduleur :}
-    \begin{enumerate}
-        \item Finalisation du design de l'onduleur
-        \item Support à l'équipe informatique
-    \end{enumerate}
-    \item \textbf{Batterie BMS et Instrumentation :}
-    \begin{enumerate}
-        \item Finaliser le design des convertisseurs
-        \item Révison des pièces et du circuit du BMS
-    \end{enumerate}
-    \item \textbf{Audit d'équipe :}
-    \begin{enumerate}
-        \item Compléter budget par système
-        \item Faire présentation d'équipe
-    \end{enumerate}
-    \end{itemize}
-    
-    % \vspace{1cm} % spacing vertical
-}
-
-}
-
-\headerbox{Cashflow}{name=cashflow,column=0,span=2,below=risques}{
-{
-
-    % \vspace{.6cm} % spacing vertical
-    {
-        \hspace{1cm}
-        \centering
-    	\includegraphics[width=0.85\linewidth]{img/cashflow.pdf}
-    }
-    %\vspace{1.15cm} % spacing vertical
-}
-
+\headerbox{Cashflow}{name=cashflow,column=0,span=3,below=risques}{
+\vspace{.6cm} % spacing vertical
+\hspace{1cm}
+\begin{center}
+    \includegraphics[scale=.40]{img/cashflow.png}
+\end{center}
 }
 
 \end{poster}
-
-
-
 
 \end{document}
