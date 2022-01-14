@@ -77,7 +77,7 @@ linewidth=1pt % Width of the border lines around content boxes
 \small{ Période couverte du {\AdvanceDate[-7]\today} au {\AdvanceDate[0]\today}
 }
 }
-{\includegraphics[width=.1\linewidth]{img/udes.png}} % TU Dublin logo
+{\includegraphics[width=.1\linewidth]{img/udes.pdf}} % TU Dublin logo
 
 \headerbox{Objectif de projet}{name=objectif,column=0,row=0, span=3}{
 Créer un véhicule efficace à propulsion électrique pour participer et gagner la compétition Shell-éco marathon dans la division ''véhicule urbain'' en 2023
@@ -267,7 +267,7 @@ linewidth=1pt % Width of the border lines around content boxes
 {\textsf{{}}} % Titre vide pcq sinon ça plante
 \hfill \break % Ligne vide pcq sinon ça plante
 
-\headerbox{Objectifs deux semaines}{name=objectifs,column=0, row=0, span=3}{{\input{tableaux/taches_accomplies}}}
+\headerbox{Objectifs bimensuels}{name=objectifs,column=0, row=0, span=3}{{\input{tableaux/taches_accomplies}}}
 
 
 \headerbox{Problèmes}{name=problemes,column=0,span=3,below=objectifs}{
@@ -282,8 +282,14 @@ linewidth=1pt % Width of the border lines around content boxes
 \vspace{.6cm} % spacing vertical
 \hspace{1cm}
 \begin{center}
-    \includegraphics[scale=.40]{img/cashflow.png}
+    \includegraphics[scale=.6]{img/cashflow.pdf}
 \end{center}
+}
+
+\headerbox{Citation de la semaine}{name=citation,column=0,row=0, span=3,below=cashflow}{
+ \textit{"Un joueur qui rend une équipe bonne est plus précieux qu'un bon joueur."}
+
+\vspace{0.2cm} %vertical spacing
 }
 
 \end{poster}
