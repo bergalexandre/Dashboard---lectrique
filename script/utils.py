@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import date
+from datetime import date, timedelta
 from collections import namedtuple
 
 ##################################################
@@ -7,7 +7,7 @@ from collections import namedtuple
 ##################################################
 
 DATES = {
-    "TODAY" : date.today(),
+    "TODAY" : date.today() - timedelta(days=1),
     "SEMESTER_START" : "01/10/2022"
 }
 
