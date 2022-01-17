@@ -96,10 +96,10 @@ class CourbeEnS():
 
         #jusqu'à la semaine 8, worked hours = realprogress = budgeted hour
         #TODO: retirer pour prochaine session
-        hoursOffset = numpy.array((BudgetedHours[:8] + ([BudgetedHours[8]]*(16-8))))
+        # hoursOffset = numpy.array((BudgetedHours[:8] + ([BudgetedHours[8]]*(16-8))))
 
-        ax.plot(range(week+1), hoursOffset[:week+1] + workedHours[:week+1], "r--")
-        ax.plot(range(week+1), hoursOffset[:week+1] + realProgressHours[:week+1], "g")
+        ax.plot(range(week+1), workedHours[:week+1], "r--")
+        ax.plot(range(week+1), realProgressHours[:week+1], "g")
 
         #deltaAvancement = BudgetedHours[index] - workedHours[index]
         #ax.plot(range(index, len(BudgetedHours)), list((heureTotal-deltaAvancement) for heureTotal in BudgetedHours[index:]), "r--")

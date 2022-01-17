@@ -68,7 +68,7 @@ if __name__ == "__main__":
     git        = False
     plt.style.use(PATHS["STYLE"])
 
-    heures_travaillees = HeuresTravaillees(speciality, offset=8)
+    heures_travaillees = HeuresTravaillees(speciality)
     heures_travaillees.fetchData()
     heures_travaillees.graphSave()
 
@@ -78,9 +78,9 @@ if __name__ == "__main__":
     # taches_effectuees.fetchData()
     # taches_effectuees.writeTable()
 
-    avancement_systemes = AvancementSystemes(speciality)
-    avancement_systemes.fetchData()
-    avancement_systemes.graphSave()
+    # avancement_systemes = AvancementSystemes(speciality)
+    # avancement_systemes.fetchData()
+    # avancement_systemes.graphSave()
 
     # problemes = Problemes(SPEC)
     # problemes.fetchData()
