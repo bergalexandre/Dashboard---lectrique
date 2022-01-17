@@ -74,16 +74,16 @@ class Systeme():
     """
     SIMULATEUR      = {'name':'Simulateur', 'number':'SIM1', 'hours':2500}
     INSTRUMENTATION = {'name':'Instrumentation', 'number':'INS1', 'hours':1000}
-    CONTROLE        = {'name':'Contrôle moteur et inverter', 'number':'MOT2', 'hours':1000}
+    CONTROLE        = {'name':'Contrôle moteur et onduleur', 'number':'MOT2', 'hours':1000}
     GESTION         = {'name':'Gestion de projet', 'number':'GES1', 'hours':1000}
     ERGONOMIE       = {'name':'Ergonomie', 'number':'ERG1', 'hours':500}
     COQUE           = {'name':'Coque', 'number':'COQ1', 'hours':1500}
     CHASSIS         = {'name':'Chassis', 'number':'CHA1', 'hours':1500}
     DIRECTION       = {'name':'Direction', 'number':'DIR1', 'hours':500}
     FREIN           = {'name':'Frein', 'number':'FRE1', 'hours':500}
-    THERMIQUE       = {'name':'Transferts Thermiques', 'number':'TTH1', 'hours':500}
+    THERMIQUE       = {'name':'Transferts thermiques', 'number':'TTH1', 'hours':500}
     SUSPENSION      = {'name':'Suspension', 'number':'SUS1', 'hours':500}
-    MOTEUR          = {'name':'Moteur et Transmission', 'number':'MOT1', 'hours':500}
+    MOTEUR          = {'name':'Moteur/transmission', 'number':'MOT1', 'hours':500}
     BATTERIE        = {'name':'Batterie/BMS', 'number':'BAT1', 'hours':500}
     
     ALL = [SIMULATEUR, INSTRUMENTATION, CONTROLE, GESTION, ERGONOMIE, COQUE, CHASSIS, DIRECTION, FREIN, THERMIQUE, SUSPENSION, MOTEUR, BATTERIE]
