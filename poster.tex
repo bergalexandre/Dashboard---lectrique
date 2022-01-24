@@ -104,7 +104,7 @@ Créer un véhicule efficace à propulsion électrique pour gagner la compétiti
     \begin{enumerate}
         \item Revue conception et commande PCB V1 onduleur
         \item Revue de conception et commande PCB V1 BMS
-        \item Objectifs bimensuels
+        \item Changement de plan DCDC 12V
         %%\item Quatrième truc à parler gestion
         %%\item Cinquième truc à parler gestion
     \end{enumerate}
@@ -280,17 +280,46 @@ linewidth=1pt % Width of the border lines around content boxes
 \input{tableaux/risques}
 }
 
-\headerbox{Cashflow}{name=cashflow,column=0,span=3,below=risques}{
+\end{poster}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{poster}
+{
+grid=false,
+headerborder=open, % Adds a border around the header of content boxes
+colspacing=1em, % Column spacing
+bgColorOne=white, % Background color for the gradient on the left side of the poster
+bgColorTwo=white, % Background color for the gradient on the right side of the poster
+borderColor=Mycolor1, % Border color
+headerColorOne=Mycolor2, % Background color for the header in the content boxes (left side)
+headerColorTwo=Mycolor2, % Background color for the header in the content boxes (right side)
+headerFontColor=white, % Text color for the header text in the content boxes
+boxColorOne=white, % Background color of the content boxes
+textborder=rounded, %rectangle, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+eyecatcher=false, % Set to false for ignoring the left logo in the title and move the title left
+headerheight=0\textheight, % Height of the header
+headershape=rounded, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+headershade=plain,
+headerfont=\Large\textsf, % Large, bold and sans serif font in the headers of content boxes
+%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+linewidth=1pt % Width of the border lines around content boxes
+}
+{}
+{\textsf{{}}} % Titre vide pcq sinon ça plante
+\hfill \break % Ligne vide pcq sinon ça plante
+
+\headerbox{Cashflow}{name=cashflow,column=0,span=3}{
 % \vspace{.6cm} % spacing vertical
 \hspace{1cm}
 \begin{center}
-    \includegraphics[scale=0.18]{img/cashflow.pdf}
+    \includegraphics[width=\linewidth]{img/Cashflow_text.pdf}
 \end{center}
 }
 
 \headerbox{Citation de la semaine}{name=citation,column=0,row=0, span=3,below=cashflow}{
- \textit{"Un joueur qui rend une équipe bonne est plus précieux qu'un bon joueur."}
-
+ \textit{"Le travail fatigue même les ânes."} -- Mateo Aleman
+%
 \vspace{0.2cm} %vertical spacing
 }
 
