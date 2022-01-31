@@ -74,7 +74,7 @@ class HeuresTravaillees():
 
         for indexMembre, nom in enumerate(self.heures_travaillees):
             axes.plot(indexMembre, moyennes_hebdo[indexMembre],
-                      "ko" if moyennes_hebdo[indexMembre] >= 9 else "kx")
+                      "ko" if moyennes_hebdo[indexMembre] >= 16 else "kx")
         plt.xlim([-1, len(self.heures_travaillees)])
         ylim_low, ylim_high = axes.get_ylim()
         plt.ylim([ylim_low, ylim_high+1])
