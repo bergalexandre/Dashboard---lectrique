@@ -18,7 +18,7 @@ class HeuresTravaillees():
 
     def fetchData(self):
         # fetching data
-        semaine_courante = 'Sem 5'
+        semaine_courante = DATA.FORMULA['Date Actuel'][1] # 'Sem 8'
         data = DATA.CRTE[['#Requis', 'NOM', 'Semaine', 'heures']]
 
         # Heures totales et heures systemes
