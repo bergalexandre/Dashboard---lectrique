@@ -24,7 +24,7 @@ def findWeek(dates = None, start = DATES["SEMESTER_START"], periods = 16):
     # Find current week
     week = 0
     for _, date in enumerate(dates):
-        if date > DATES["TODAY"]:
+        if date > pd.Timestamp(DATES["TODAY"]):
             break
         week += 1
     return week
