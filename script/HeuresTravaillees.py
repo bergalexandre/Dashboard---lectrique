@@ -39,7 +39,8 @@ class HeuresTravaillees():
 
     def graphSave(self):
         fig, axes = plt.subplots()
-        colors = ['#23ccc1','#32cea9','#96c74c','#b8c02a','#dcb504','#ffa600', '#c20606', '#cd2e01', '#1f60c2', '#ff6c54' ]
+        #colors = ['#23ccc1', '#32cea9', '#96c74c', '#b8c02a', '#dcb504', '#ffa600', '#c20606', '#cd2e01', '#1f60c2', '#ff6c54']
+        colors = ['#808080', '#1b3545', '#d26628', '#21b46d', '#3e4d5c', '#3a171d', '#fdd2ba', '#f37322', '#367950'] # RISE colors
         random.shuffle(colors)
         
         labels = []
