@@ -8,7 +8,7 @@ from collections import namedtuple
 
 DATES = {
     "TODAY" : date.today() - timedelta(days=1),
-    "SEMESTER_START" : "01/10/2022"
+    "SEMESTER_START" : "09/01/2022"
 }
 
 PATHS = {
