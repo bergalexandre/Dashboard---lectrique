@@ -87,31 +87,30 @@ Créer un véhicule efficace à propulsion électrique pour gagner la compétiti
 }
 
 
-\headerbox{Objectifs de session}{name=objectif_session,column=1,below=objectif,span=2}{
+% \headerbox{Objectifs de session}{name=objectif_session,column=1,below=objectif,span=2}{
 
-%\vspace{0.15cm}
-\centering
-{\input{tableaux/objectifs_session}}
+% %\vspace{0.15cm}
+% \centering
+% {\input{tableaux/objectifs_session}}
 
-% \vspace{0.4cm} % spacing vertical
+% % \vspace{0.4cm} % spacing vertical
 
-}
+% }
 
-\headerbox{Ordre du jour}{name=ordre_jour,column=0,below=objectif,span=1}{
+\headerbox{Ordre du jour}{name=ordre_jour,column=0,below=objectif,span=2}{
 \vspace{0.1cm}
 \begin{itemize}
-    \item \textbf{Rencontre gestion :}
+    \item \textbf{Rencontre gestion:}
     \begin{enumerate}
-        \item Assemblage bloc batterie V0
-        \item Design attache moteur transmission
-        % \item Onduleur fonctionnel
-        % \item Fin imminente des cours de concentration
+        \item Présentation du tableau de bord
+        \item Planification détaillée S8
+        \item Analyse de risque
     \end{enumerate}
 \end{itemize}
 \vspace{0.20cm} % spacing vertical
 }
 
-\headerbox{Membres}{name=membres,column=2,below=objectif_session,span=1}{
+\headerbox{Membres}{name=membres,column=2,below=objectif,span=1}{
 \vspace{0.3cm}
 
 
@@ -163,9 +162,9 @@ Instrumentation
 % \vspace{-2mm}
 \textbf{Loïc Poirier}
 
+Connectique
 Bloc batterie
 
-Simulateur
 
 \begin{wrapfigure}[5]{r}{0.25\textwidth}
 \includegraphics[width=.9\linewidth]{img/membres/Marc-Antoine-Dubreuil-2.jpg} 
@@ -213,18 +212,18 @@ Transferts thermiques
 }
 
 
-\headerbox{Courbe en S}{name=courbe_s,column=0,span=2,below=objectif_session}{
-{
-    {
-        \hspace{0.75cm}
-        \centering
-    	\includegraphics[width=0.9\linewidth]{img/Courbe_S.pdf}
-    }
-}
+% \headerbox{Courbe en S}{name=courbe_s,column=0,span=2,below=objectif_session}{
+% {
+%     {
+%         \hspace{0.75cm}
+%         \centering
+%     	\includegraphics[width=0.9\linewidth]{img/Courbe_S.pdf}
+%     }
+% }
 
-}
+% }
 
-\headerbox{Heures travaillées}{name=heures,column=0,span=2,below=courbe_s}{
+\headerbox{Heures travaillées}{name=heures,column=0,span=2,below=ordre_jour}{
 {
     
     {
@@ -234,7 +233,16 @@ Transferts thermiques
     }
     % \vspace{1.3cm}
 }
+}
 
+\headerbox{Cashflow}{name=cashflow,column=0,span=2,below=heures}{
+% \vspace{.6cm} % spacing vertical
+\hspace{1cm}
+\vspace{-5\baselineskip}
+\begin{center}
+    \includegraphics[width=\linewidth]{img/cashflow_20220404.pdf}
+\end{center}
+\vspace{-32\baselineskip}
 }
 
 \end{poster}
@@ -275,51 +283,43 @@ linewidth=1pt % Width of the border lines around content boxes
 \input{tableaux/risques}
 }
 
-\end{poster}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{poster}
-{
-grid=false,
-headerborder=open, % Adds a border around the header of content boxes
-colspacing=1em, % Column spacing
-bgColorOne=white, % Background color for the gradient on the left side of the poster
-bgColorTwo=white, % Background color for the gradient on the right side of the poster
-borderColor=Mycolor1, % Border color
-headerColorOne=Mycolor2, % Background color for the header in the content boxes (left side)
-headerColorTwo=Mycolor2, % Background color for the header in the content boxes (right side)
-headerFontColor=white, % Text color for the header text in the content boxes
-boxColorOne=white, % Background color of the content boxes
-textborder=rounded, %rectangle, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
-eyecatcher=false, % Set to false for ignoring the left logo in the title and move the title left
-headerheight=0\textheight, % Height of the header
-headershape=rounded, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
-headershade=plain,
-headerfont=\Large\textsf, % Large, bold and sans serif font in the headers of content boxes
-%textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
-linewidth=1pt % Width of the border lines around content boxes
-}
-{}
-{\textsf{{}}} % Titre vide pcq sinon ça plante
-\hfill \break % Ligne vide pcq sinon ça plante
-
-\headerbox{Cashflow}{name=cashflow,column=0,span=3}{
-% \vspace{.6cm} % spacing vertical
-\hspace{1cm}
-\vspace{-5\baselineskip}
-\begin{center}
-    \includegraphics[width=\linewidth]{img/cashflow_20220404.pdf}
-\end{center}
-\vspace{-32\baselineskip}
-}
-
-\headerbox{Citation de la semaine}{name=citation,column=0,row=0, span=3,below=cashflow}{
+\headerbox{Citation de la semaine}{name=citation,column=0,row=0, span=3,below=risques}{
     \vspace{0.1cm}
-    \textit{"Imagination is the only weapon in the war against reality."} --Lewis Carroll
+    \textit{“Si la dernière minute n'existait pas, une quantité de choses ne serait jamais faite.”} --Anonyme
     \vspace{0.1cm} % vertical spacing
 }
 
 \end{poster}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \begin{poster}
+% {
+% grid=false,
+% headerborder=open, % Adds a border around the header of content boxes
+% colspacing=1em, % Column spacing
+% bgColorOne=white, % Background color for the gradient on the left side of the poster
+% bgColorTwo=white, % Background color for the gradient on the right side of the poster
+% borderColor=Mycolor1, % Border color
+% headerColorOne=Mycolor2, % Background color for the header in the content boxes (left side)
+% headerColorTwo=Mycolor2, % Background color for the header in the content boxes (right side)
+% headerFontColor=white, % Text color for the header text in the content boxes
+% boxColorOne=white, % Background color of the content boxes
+% textborder=rounded, %rectangle, % Format of the border around content boxes, can be: none, bars, coils, triangles, rectangle, rounded, roundedsmall, roundedright or faded
+% eyecatcher=false, % Set to false for ignoring the left logo in the title and move the title left
+% headerheight=0\textheight, % Height of the header
+% headershape=rounded, % Specify the rounded corner in the content box headers, can be: rectangle, small-rounded, roundedright, roundedleft or rounded
+% headershade=plain,
+% headerfont=\Large\textsf, % Large, bold and sans serif font in the headers of content boxes
+% %textfont={\setlength{\parindent}{1.5em}}, % Uncomment for paragraph indentation
+% linewidth=1pt % Width of the border lines around content boxes
+% }
+% {}
+% {\textsf{{}}} % Titre vide pcq sinon ça plante
+% \hfill \break % Ligne vide pcq sinon ça plante
+
+
+
+% \end{poster}
 
 \end{document}
