@@ -72,10 +72,13 @@ class HeuresTravaillees():
         moyenne = somme / len(self.heures_travaillees)
         axes.plot(np.array(range(-1, len(self.heures_travaillees)+1)),
                   np.array([moyenne]*(len(self.heures_travaillees)+2)), "g--")
-
+        axes.plot(np.array(range(-1, len(self.heures_travaillees)+1)),
+                  np.array([9]*(len(self.heures_travaillees)+2)), "k--")
+        
         for indexMembre, nom in enumerate(self.heures_travaillees):
-            axes.plot(indexMembre, moyennes_hebdo[indexMembre],
-                      "ko" if moyennes_hebdo[indexMembre] >= 9 else "kx")
+            # axes.plot(indexMembre, moyennes_hebdo[indexMembre],
+            #           "ko" if moyennes_hebdo[indexMembre] >= 9 else "kx")
+            axes.plot(indexMembre, moyennes_hebdo[indexMembre], "ko")
         plt.xlim([-1, len(self.heures_travaillees)])
         ylim_low, ylim_high = axes.get_ylim()
         plt.ylim([ylim_low, ylim_high+1])
